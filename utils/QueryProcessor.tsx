@@ -33,8 +33,6 @@ export default function QueryProcessor(query: string): string {
     return Math.max(firstNumber, secondNumber, thirdNumber).toString();
   }
 
-  // both a square and a cube?
-
   if (query.toLowerCase().includes("which of the following numbers is both a square and a cube")) {
     const queryArray = query.toLowerCase().split(" ");
     for (let numberIdx = 12; numberIdx < queryArray.length; numberIdx++) {
@@ -45,5 +43,25 @@ export default function QueryProcessor(query: string): string {
     }
   }
 
+  // Which of the following numbers are primes: 53, 24, 22, 26, 2?
+  if (query.toLowerCase().includes("which of the following numbers are primes")) {
+    const queryArray = query.toLowerCase().split(" ");
+    for (let numberIdx = 7; numberIdx < queryArray.length; numberIdx++) {
+      let number = parseInt(queryArray[numberIdx].substring(0, queryArray[numberIdx].length - 1));
+      if (isPrime(number)) {
+        return number.toString();
+      }
+    }
+  }
+
   return "";
+}
+
+function isPrime(n) {
+  for (let i = 2; i < n; i++) {
+    if (n % i === 0) {
+      return false;
+    }
+  }
+  return n > 1;
 }
