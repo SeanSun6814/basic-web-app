@@ -33,6 +33,13 @@ export default function QueryProcessor(query: string): string {
     return (firstNumber * secondNumber).toString();
   }
 
+  if (query.toLowerCase().includes("what is") && query.toLowerCase().includes("power")) {
+    const queryArray = query.toLowerCase().split(" ");
+    const firstNumber = parseInt(queryArray[2]);
+    const secondNumber = parseInt(queryArray[7]);
+    return (Math.pow(firstNumber, secondNumber)).toString();
+  }
+
   if (query.toLowerCase().includes("which of the following numbers") && query.toLowerCase().includes("largest")) {
     const queryArray = query.toLowerCase().split(" ");
     let firstNumber = parseInt(queryArray[8].substring(0, queryArray[8].length - 1));
@@ -54,12 +61,14 @@ export default function QueryProcessor(query: string): string {
   // Which of the following numbers are primes: 53, 24, 22, 26, 2?
   if (query.toLowerCase().includes("which of the following numbers are primes")) {
     const queryArray = query.toLowerCase().split(" ");
+    let result_arr = [];
     for (let numberIdx = 7; numberIdx < queryArray.length; numberIdx++) {
       let number = parseInt(queryArray[numberIdx].substring(0, queryArray[numberIdx].length - 1));
       if (isPrime(number)) {
-        return number.toString();
+        result_arr.push(number);
       }
     }
+    return result_arr.join(", ");
   }
 
   return "";
