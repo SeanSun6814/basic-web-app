@@ -26,7 +26,17 @@ export default function QueryProcessor(query: string): string {
     return Math.max(firstNumber, secondNumber, thirdNumber).toString();
   }
 
-  console.log("QUERY:", query.toLowerCase());
+  // both a square and a cube?
+
+  if (query.toLowerCase().includes("which of the following numbers is both a square and a cube")) {
+    const queryArray = query.toLowerCase().split(" ");
+    for (let numberIdx = 12; numberIdx < queryArray.length; numberIdx++) {
+      let number = parseInt(queryArray[numberIdx].substring(0, queryArray[numberIdx].length - 1));
+      if (Math.sqrt(number) % 1 === 0 && Math.cbrt(number) % 1 === 0) {
+        return number.toString();
+      }
+    }
+  }
 
   return "";
 }
