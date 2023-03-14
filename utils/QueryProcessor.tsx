@@ -8,7 +8,7 @@ export default function QueryProcessor(query: string): string {
   }
 
   if (query.toLowerCase().includes("your name")) {
-    return "2 ez";
+    return "2-ez";
   }
 
   console.log("QUERY:", query.toLowerCase());
