@@ -54,7 +54,7 @@ export default function QueryProcessor(query: string): string {
     const queryArray = query.toLowerCase().split(" ");
     const firstNumber = parseInt(queryArray[2]);
     const secondNumber = parseInt(queryArray[7]);
-    return (Math.pow(firstNumber, secondNumber)).toString();
+    return (firstNumber ** secondNumber).toString();
   }
 
   if (query.toLowerCase().includes("which of the following numbers") && query.toLowerCase().includes("largest")) {
