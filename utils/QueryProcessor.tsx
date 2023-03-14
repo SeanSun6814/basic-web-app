@@ -11,6 +11,23 @@ export default function QueryProcessor(query: string): string {
     return "2-ez";
   }
 
+  function hasTwo(str: string, targetString: string) {
+    return (
+      targetString.toLowerCase().includes(str) &&
+      targetString.toLowerCase().indexOf(str) !==
+      targetString.toLowerCase().lastIndexOf(str)
+    );
+  }
+
+  // there are 2 pluses
+  if (query.toLowerCase().includes("what is") && query.toLowerCase().includes("plus") && hasTwo("plus", query)) {
+    const queryArray = query.toLowerCase().split(" ");
+    const firstNumber = parseInt(queryArray[2]);
+    const secondNumber = parseInt(queryArray[4]);
+    const Number3 = parseInt(queryArray[6]);
+    return (firstNumber + secondNumber + Number3).toString();
+  }
+
   if (query.toLowerCase().includes("what is") && query.toLowerCase().includes("plus")) {
     const queryArray = query.toLowerCase().split(" ");
     const firstNumber = parseInt(queryArray[2]);
@@ -58,7 +75,6 @@ export default function QueryProcessor(query: string): string {
     }
   }
 
-  // Which of the following numbers are primes: 53, 24, 22, 26, 2?
   if (query.toLowerCase().includes("which of the following numbers are primes")) {
     const queryArray = query.toLowerCase().split(" ");
     let result_arr = [];
