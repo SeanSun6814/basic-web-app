@@ -8,9 +8,6 @@ export default function Home() {
     <div>
       <h1>Welcome!!</h1>
       <h1>Welcome!!</h1>
-      <h1>Welcome!!</h1>
-      <h1>Welcome!!</h1>
-      <h1>Welcome!!</h1>
       <p>Please enter your query in the box below:</p>
       <input
         type="text"
