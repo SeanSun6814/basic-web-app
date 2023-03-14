@@ -18,6 +18,14 @@ export default function QueryProcessor(query: string): string {
     return (firstNumber + secondNumber).toString();
   }
 
+  // minus 
+  if (query.toLowerCase().includes("what is") && query.toLowerCase().includes("minus")) {
+    const queryArray = query.toLowerCase().split(" ");
+    const firstNumber = parseInt(queryArray[2]);
+    const secondNumber = parseInt(queryArray[4]);
+    return (firstNumber - secondNumber).toString();
+  }
+
   if (query.toLowerCase().includes("what is") && query.toLowerCase().includes("multiplied")) {
     const queryArray = query.toLowerCase().split(" ");
     const firstNumber = parseInt(queryArray[2]);
