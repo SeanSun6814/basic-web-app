@@ -18,6 +18,13 @@ export default function QueryProcessor(query: string): string {
     return (firstNumber + secondNumber).toString();
   }
 
+  if (query.toLowerCase().includes("what is") && query.toLowerCase().includes("multiplied")) {
+    const queryArray = query.toLowerCase().split(" ");
+    const firstNumber = parseInt(queryArray[2]);
+    const secondNumber = parseInt(queryArray[5]);
+    return (firstNumber * secondNumber).toString();
+  }
+
   if (query.toLowerCase().includes("which of the following numbers") && query.toLowerCase().includes("largest")) {
     const queryArray = query.toLowerCase().split(" ");
     let firstNumber = parseInt(queryArray[8].substring(0, queryArray[8].length - 1));
