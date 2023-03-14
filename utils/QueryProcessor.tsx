@@ -18,6 +18,14 @@ export default function QueryProcessor(query: string): string {
     return (firstNumber + secondNumber).toString();
   }
 
+  if (query.toLowerCase().includes("which of the following numbers") && query.toLowerCase().includes("largest")) {
+    const queryArray = query.toLowerCase().split(" ");
+    let firstNumber = parseInt(queryArray[8].substring(0, queryArray[8].length - 1));
+    let secondNumber = parseInt(queryArray[9].substring(0, queryArray[9].length - 1));
+    let thirdNumber = parseInt(queryArray[10].substring(0, queryArray[10].length - 1));
+    return Math.max(firstNumber, secondNumber, thirdNumber).toString();
+  }
+
   console.log("QUERY:", query.toLowerCase());
 
   return "";
